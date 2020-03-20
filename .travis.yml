@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 language: julia
 
@@ -26,8 +25,3 @@ notifications:
 
 codecov: true
 coveralls: true
-=======
-language: julia
-julia:
-  - 1.3.1
->>>>>>> Add Travis CI yml file
