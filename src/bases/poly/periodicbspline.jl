@@ -16,7 +16,7 @@ function check_equispaced(ξ::Vector{T}) where {T}
 end
 
 # constructors
-struct PBSpline{T} <: PolynomialBasis{T,T}
+struct PBSpline{T} <: PolynomialBasis{T}
     p :: Int                    # spline degree
     nodes :: ScatteredGrid{T}   # knot points
     # n :: Int                    # number of splines
