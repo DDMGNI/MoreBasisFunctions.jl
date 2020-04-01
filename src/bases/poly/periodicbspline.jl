@@ -55,6 +55,7 @@ invh_elements(b::PBSpline) = nnodes(b)/L_domain(b)
 
 BasisFunctions.native_index(b::PBSpline, idx) = PBSplineIndex(idx)
 BasisFunctions.linear_index(b::PBSpline, idx) = PBSplineIndex(idx)
+BasisFunctions.ordering(b::PBSpline) = Base.OneTo(nnodes(b))
 BasisFunctions.support(b::PBSpline{T}) where {T} = PBSplineInterval{T}()
 
 BasisFunctions.interpolation_grid(b::PBSpline{T}) where {T} = ScatteredGrid(get_pbspline_nodes(T,length(b)), PBSplineInterval{T}())
