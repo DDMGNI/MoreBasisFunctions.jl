@@ -1,7 +1,7 @@
 
 # MoreBasisFunctions.jl
 
-*Extends the BasisFunctions.jl packge by additional basis functions (Lagrange, Bernstein, Splines).*
+*Extends the BasisFunctions.jl package by additional basis functions (Lagrange, Bernstein, Splines).*
 
 
 MoreBasisFunctions.jl extends the [BasisFunctions.jl](https://github.com/JuliaApproximation/BasisFunctions.jl)
