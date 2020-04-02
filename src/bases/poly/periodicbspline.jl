@@ -54,7 +54,7 @@ L_domain(b::PBSpline) = nodes(b)[end] - nodes(b)[1]
 invh_elements(b::PBSpline) = nnodes(b)/L_domain(b)
 
 BasisFunctions.native_index(b::PBSpline, idx) = PBSplineIndex(idx)
-BasisFunctions.linear_index(b::PBSpline, idx) = PBSplineIndex(idx)
+#BasisFunctions.linear_index(b::PBSpline, idx) = PBSplineIndex(idx)
 BasisFunctions.ordering(b::PBSpline) = Base.OneTo(nnodes(b))
 BasisFunctions.support(b::PBSpline{T}) where {T} = PBSplineInterval{T}()
 
