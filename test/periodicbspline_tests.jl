@@ -6,7 +6,7 @@ b = PBSpline(2, 5)
 
 @testset "$(rpad("Periodic BSplines",P))" begin
 
-    BasisFunctions.Test.test_generic_dict_interface(b)
+    BasisFunctions.Test.test_generic_dict_interface(PBSpline(3, 10))
 
     @testset "$(rpad("Basic functionality",P))" begin
         ξ = nodes(b)
