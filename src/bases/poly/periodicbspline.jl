@@ -1,5 +1,5 @@
 using BasisFunctions: UnitInterval, PolynomialBasis
-using BasisFunctions: hasderivative, hasantiderivative, support
+using BasisFunctions: hasderivative, hasantiderivative, ordering, support
 
 const PBSplineInterval = UnitInterval
 const PBSplineIndex = NativeIndex{:pbspline}
@@ -72,6 +72,9 @@ function _pbspline(b::PBSpline{T}, i::PBSplineIndex, x::T,
     while x > n        x -= n end
     return _unitpbspline(b.p,x)
 end
+
+_pbspline(b::PBSpline, i, x) = _pbspline(b, native_index(b,i), x)
+
 
 # evaluation of "unit" spline with support (0,n+1)
 function _unitpbspline(p::Int, x::T) where {T}
