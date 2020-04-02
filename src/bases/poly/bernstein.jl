@@ -34,7 +34,6 @@ nnodes(b::Bernstein) = b.n
 degree(b::Bernstein) = b.n-1
 
 BasisFunctions.native_index(b::Bernstein, idx) = BernsteinIndex(idx)
-BasisFunctions.linear_index(b::Bernstein, idx) = BernsteinIndex(idx)
 BasisFunctions.ordering(b::Bernstein) = Base.OneTo(nnodes(b))
 BasisFunctions.support(b::Bernstein{T}) where {T} = BernsteinInterval{T}()
 

@@ -68,7 +68,6 @@ nnodes(b::Lagrange) = b.n
 degree(b::Lagrange) = b.n-1
 
 BasisFunctions.native_index(b::Lagrange, idx) = LagrangeIndex(idx)
-BasisFunctions.linear_index(b::Lagrange, idx) = LagrangeIndex(idx)
 BasisFunctions.ordering(b::Lagrange) = Base.OneTo(nnodes(b))
 BasisFunctions.support(b::Lagrange) = support(b.nodes)
 
