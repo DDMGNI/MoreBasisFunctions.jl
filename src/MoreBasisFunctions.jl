@@ -16,8 +16,9 @@ module MoreBasisFunctions
     include("bases/generic/nodes.jl")
     include("bases/generic/vandermonde_matrix.jl")
 
+    include("bases/bspline/bspline_periodic.jl")
+
     include("bases/poly/bernstein.jl")
     include("bases/poly/lagrange.jl")
-    include("bases/poly/periodicbspline.jl")
 
 end # module
