@@ -1,5 +1,7 @@
 using BasisFunctions: UnitInterval, PolynomialBasis
 using BasisFunctions: hasderivative, hasantiderivative, ordering, support
+using BasisFunctions: supremum, infimum
+using BasisFunctions.Test: suitable_function
 
 const PBSplineInterval = UnitInterval
 const PBSplineIndex = NativeIndex{:pbspline}
@@ -54,14 +56,19 @@ L_domain(b::PBSpline) = nodes(b)[end] - nodes(b)[1]
 invh_elements(b::PBSpline) = nnodes(b)/L_domain(b)
 
 BasisFunctions.native_index(b::PBSpline, idx) = PBSplineIndex(idx)
-#BasisFunctions.linear_index(b::PBSpline, idx) = PBSplineIndex(idx)
 BasisFunctions.ordering(b::PBSpline) = Base.OneTo(nnodes(b))
+BasisFunctions.period(b::PBSpline{T}) where {T} = one(T)
 BasisFunctions.support(b::PBSpline{T}) where {T} = PBSplineInterval{T}()
 
-BasisFunctions.interpolation_grid(b::PBSpline{T}) where {T} = ScatteredGrid(get_pbspline_nodes(T,length(b)), PBSplineInterval{T}())
+BasisFunctions.interpolation_grid(b::PBSpline{T}) where {T} = PeriodicEquispacedGrid(length(b), PBSplineInterval{T}())
+BasisFunctions.hasinterpolationgrid(b::PBSpline) = true
 
 BasisFunctions.similar(::PBSpline, ::Type{T}, n::Int) where {T} = PBSpline{T}(n)
 BasisFunctions.similar(::PBSpline, ::Type{T}, ξ::Vector{T}) where {T} = PBSpline(ξ)
+
+# for testing purposes
+BasisFunctions.Test.suitable_function(s::PBSpline) = x->exp(cos(2π*x/(supremum(support(s)) - infimum(support(s)))))
+
 
 # evaluation at point x
 function _pbspline(b::PBSpline{T}, i::PBSplineIndex, x::T,
